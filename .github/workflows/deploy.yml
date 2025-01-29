@@ -22,9 +22,11 @@ jobs:
         with:
           version: '7'
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile  # Added --no-frozen-lockfile flag here
+        run: pnpm install --no-frozen-lockfile
       - name: Build Astro
         run: pnpm run build
+      - name: List files (debugging step)
+        run: ls -R  # This lists all files to check if dist exists
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
