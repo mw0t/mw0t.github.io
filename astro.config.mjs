@@ -39,7 +39,18 @@ export default defineConfig({
   vite: {
     build: {
       rollupOptions: {
-        external: ['virtual:astro-icon'] // Add this line to make astro-icon external
+        external: ['virtual:astro-icon'], // Make astro-icon external
+        plugins: [
+          {
+            name: 'astro-icon-resolver', // Custom plugin to resolve virtual imports
+            resolveId(source) {
+              if (source === 'virtual:astro-icon') {
+                return 'astro-icon'; // Resolve the virtual import to the actual module
+              }
+              return null;
+            }
+          }
+        ]
       }
     }
   }
