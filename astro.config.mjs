@@ -36,4 +36,11 @@ export default defineConfig({
       config: { applyBaseStyles: false },
     }),
   ],
+  vite: {
+    build: {
+      rollupOptions: {
+        external: ['virtual:astro-icon'] // Add this line to make astro-icon external
+      }
+    }
+  }
 });
