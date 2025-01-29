@@ -25,8 +25,8 @@ jobs:
         run: pnpm install --no-frozen-lockfile
       - name: Build Astro
         run: pnpm run build
-      - name: List files (debugging step)
-        run: ls -R  # This lists all files to check if dist exists
+      - name: List files in the build directory (debugging step)
+        run: ls -R ./dist || echo "No dist folder found"  # List files in dist or show message if not found
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
